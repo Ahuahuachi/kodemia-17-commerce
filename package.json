@@ -1,0 +1,24 @@
+{
+  "name": "node-init",
+  "version": "1.0.0",
+  "description": "This is a first exercise for node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "first",
+    "exercise",
+    "newbie",
+    "node",
+    "app"
+  ],
+  "author": "@ahuahuachi",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
