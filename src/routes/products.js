@@ -3,9 +3,22 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const { header1 } = req.headers;
-
-  res.json({ message: "Todos los productos", header1 });
+  res.json({
+    success: true,
+    message: "Todos los productos",
+    payload: [
+      {
+        id: 1,
+        name: "Producto 1",
+        description: "Descripción del producto 1",
+      },
+      {
+        id: 2,
+        name: "Producto 2",
+        description: "Descripción del producto 2",
+      },
+    ],
+  });
 });
 
 router.get("/:id", (req, res) => {
