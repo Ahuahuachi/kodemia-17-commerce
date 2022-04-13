@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const config = require("./config");
 
 const connect = () => {
   return new Promise((resolve, reject) => {
     mongoose.connect(
-      "mongodb+srv://js17admin:bca7y2roZXuWfmPS@cluster0.yyfu8.mongodb.net/kodemiaStore?retryWrites=true&w=majority",
+      `mongodb+srv://${config.db.user}:${config.db.password}@${config.db.host}/${config.db.baseCollection}?retryWrites=true&w=majority`,
       { useNewUrlParser: true }
     );
 

@@ -1,11 +1,14 @@
 const Product = require("../../models/products").model;
 
 const getAll = async () => {
-  const allProducts = await Product.find({}).exec();
-  return allProducts;
+  // Obtener todos los productos
+  return await Product.find({}).exec();
 };
 
-const getById = async (id) => {};
+const getById = async (id) => {
+  // Obtener un producto por id
+  return await Product.findById(id).exec();
+};
 
 const create = async (productData) => {
   const { name, price, description, image } = productData;
@@ -22,11 +25,33 @@ const create = async (productData) => {
 };
 
 const update = async (id, productData) => {
-  // Actualizar un producto
+  const { name, description, price, image } = productData;
+
+  const updatedProduct = await Product.findByIdAndUpdate(
+    id,
+    {
+      name,
+      description,
+      price,
+      image,
+    },
+    { new: true }
+  ).exec();
+
+  return updatedProduct;
+};
+
+const patch = async (id, productData) => {
+  return await Product.findByIdAndUpdate(
+    id,
+    { ...productData },
+    { new: true }
+  ).exec();
 };
 
 const del = async (id) => {
   // Eliminar un producto
+  return await Product.findByIdAndDelete(id).exec();
 };
 
 module.exports = {
@@ -35,4 +60,5 @@ module.exports = {
   create,
   update,
   del,
+  patch,
 };
