@@ -1,4 +1,5 @@
 const Product = require("../../models/products").model;
+const User = require("../../models/user").model;
 
 const getAll = async () => {
   // Obtener todos los productos
@@ -7,16 +8,20 @@ const getAll = async () => {
 
 const getById = async (id) => {
   // Obtener un producto por id
-  return await Product.findById(id).exec();
+  const product = await Product.findById(id).populate("categories").exec();
+
+  return product;
 };
 
 const create = async (productData) => {
-  const { name, price, description, image } = productData;
+  const { name, price, description, image, categories } = productData;
+
   const newProduct = new Product({
     name,
     description,
     price,
     image,
+    categories,
   });
 
   const savedProduct = await newProduct.save();
