@@ -1,12 +1,15 @@
 const express = require("express");
 const apiRouter = require("./src/routes");
 const { errorHandler, logErrors } = require("./src/middlewares/errorHandler");
+const { authHandler } = require("./src/middlewares/authHandlers");
 const db = require("./src/lib/db");
 const config = require("./src/lib/config");
 const app = express();
 const port = config.app.port;
 
 app.use(express.json());
+
+app.use(authHandler);
 
 apiRouter(app);
 
