@@ -1,5 +1,6 @@
 const express = require("express");
 const user = require("../usecases/user");
+const { authHandler } = require("../middlewares/authHandlers");
 
 const router = express.Router();
 
