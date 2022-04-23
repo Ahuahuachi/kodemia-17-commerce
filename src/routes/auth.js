@@ -16,6 +16,7 @@ router.post("/login", async (req, res, next) => {
         sub: retrievedUser._id,
         role: retrievedUser.role,
       });
+
       res.json({
         success: true,
         payload: token,

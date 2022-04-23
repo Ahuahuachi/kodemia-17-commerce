@@ -9,6 +9,7 @@ const getAll = async () => {
 const getById = async (id) => {
   // Obtener un producto por id
   const product = await Product.findById(id).populate("categories").exec();
+  // const product = await Product.findById(id).exec();
 
   return product;
 };

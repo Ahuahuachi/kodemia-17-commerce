@@ -11,7 +11,7 @@ const authHandler = async (req, res, next) => {
   } catch (error) {
     res.status(401).json({
       success: false,
-      message: "Token inválido",
+      message: "Token inválido: " + error.message,
     });
   }
 };
